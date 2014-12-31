@@ -39,17 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileSystemFactory.cs" />
     <Compile Include="IDirectory.cs" />
     <Compile Include="IFile.cs" />
     <Compile Include="IFileStreamFactory.cs" />
     <Compile Include="IFileSystem.cs" />
+    <Compile Include="IFileSystemFactory.cs" />
+    <Compile Include="Internal\Directory.cs" />
+    <Compile Include="Internal\File.cs" />
+    <Compile Include="Internal\FileSystemPath.cs" />
+    <Compile Include="Internal\Properties.cs" />
+    <Compile Include="Internal\RealFileSystem.cs" />
     <Compile Include="IPath.cs" />
     <Compile Include="IProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Internal\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

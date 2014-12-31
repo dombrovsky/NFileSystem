@@ -1,7 +1,7 @@
 ﻿namespace System.IO.FileSystem
 {
     /// <summary>
-    /// Root interface for accesiing file system.
+    /// Root object for accesiing file system.
     /// </summary>
     public interface IFileSystem
     {
