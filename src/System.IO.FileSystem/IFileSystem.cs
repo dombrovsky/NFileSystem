@@ -1,5 +1,8 @@
 ﻿namespace System.IO.FileSystem
 {
+    /// <summary>
+    /// Root interface for accesiing file system.
+    /// </summary>
     public interface IFileSystem
     {
         /// <summary>
@@ -16,6 +19,14 @@
         /// <param name="path">The directory path.</param>
         /// <returns>Directory representation.</returns>
         IDirectory Directory(IPath path);
+
+        /// <summary>
+        /// Returns the file representation.
+        /// </summary>
+        /// <remarks>This method does not create a file with a specified path or checks if file exists.</remarks>
+        /// <param name="path">The file path.</param>
+        /// <returns>File representation.</returns>
+        IFile File(IPath path);
 
         /// <summary>
         /// Gets an array containing the characters that are not allowed in file names.

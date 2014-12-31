@@ -2,6 +2,9 @@
 
 namespace System.IO.FileSystem
 {
+    /// <summary>
+    /// Represents a directory.
+    /// </summary>
     public interface IDirectory
     {
         /// <summary>
@@ -13,6 +16,11 @@ namespace System.IO.FileSystem
         /// Gets the parent directory.
         /// </summary>
         IDirectory Parent { get; }
+
+        /// <summary>
+        /// Gets the directory properties.
+        /// </summary>
+        IProperties Properties { get; }
 
         /// <summary>
         /// Gets a value indicating whether directory exists on disk.

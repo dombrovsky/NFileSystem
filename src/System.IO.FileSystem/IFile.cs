@@ -1,9 +1,12 @@
 ﻿namespace System.IO.FileSystem
 {
+    /// <summary>
+    /// Represents a file.
+    /// </summary>
     public interface IFile
     {
         /// <summary>
-        /// Gets the path of a directory.
+        /// Gets the path of a file.
         /// </summary>
         IPath Path { get; }
 
@@ -11,6 +14,11 @@
         /// Gets the parent directory.
         /// </summary>
         IDirectory Parent { get; }
+
+        /// <summary>
+        /// Gets the file properties.
+        /// </summary>
+        IProperties Properties { get; }
 
         /// <summary>
         /// Gets a value indicating whether file exists on disk.
@@ -21,5 +29,22 @@
         /// Deletes the file.
         /// </summary>
         void Delete();
+
+        /// <summary>
+        /// Decrypts a file that was encrypted by the current account using the <see cref="Encrypt()"/> method.
+        /// </summary>
+        void Decrypt();
+
+        /// <summary>
+        /// Encrypts a file so that only the account used to encrypt the file can decrypt it.
+        /// </summary>
+        void Encrypt();
+
+        /// <summary>
+        /// Opens stream to the file using specified factory.
+        /// </summary>
+        /// <param name="fileStreamFactory">The file stream factory.</param>
+        /// <returns>Opened file stream.</returns>
+        Stream AsStream(IFileStreamFactory fileStreamFactory);
     }
 }

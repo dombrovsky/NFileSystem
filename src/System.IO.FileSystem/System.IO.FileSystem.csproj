@@ -41,8 +41,10 @@
   <ItemGroup>
     <Compile Include="IDirectory.cs" />
     <Compile Include="IFile.cs" />
+    <Compile Include="IFileStreamFactory.cs" />
     <Compile Include="IFileSystem.cs" />
     <Compile Include="IPath.cs" />
+    <Compile Include="IProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

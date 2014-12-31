@@ -1,5 +1,8 @@
 ﻿namespace System.IO.FileSystem
 {
+    /// <summary>
+    /// File system path.
+    /// </summary>
     public interface IPath
     {
         /// <summary>
