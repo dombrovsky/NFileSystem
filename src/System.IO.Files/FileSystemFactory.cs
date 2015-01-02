@@ -1,6 +1,6 @@
-﻿using System.IO.FileSystem.Internal;
+﻿using System.IO.Files.Internal;
 
-namespace System.IO.FileSystem
+namespace System.IO.Files
 {
     /// <summary>
     /// Factory of real file system access objects.

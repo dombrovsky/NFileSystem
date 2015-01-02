@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace System.IO.FileSystem.Internal
+namespace System.IO.Files.Internal
 {
     internal sealed class Directory : IDirectory
     {

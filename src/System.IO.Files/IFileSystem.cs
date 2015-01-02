@@ -1,4 +1,4 @@
-﻿namespace System.IO.FileSystem
+﻿namespace System.IO.Files
 {
     /// <summary>
     /// Root object for accesiing file system.

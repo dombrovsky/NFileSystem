@@ -7,8 +7,8 @@
     <ProjectGuid>{9A59ED3F-9F17-43E7-91AD-8DA113083BC4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>System.IO.FileSystem</RootNamespace>
-    <AssemblyName>System.IO.FileSystem</AssemblyName>
+    <RootNamespace>System.IO.Files</RootNamespace>
+    <AssemblyName>System.IO.Files</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -1,4 +1,4 @@
-﻿namespace System.IO.FileSystem.Internal
+﻿namespace System.IO.Files.Internal
 {
     internal sealed class RealFileSystem : IFileSystem
     {

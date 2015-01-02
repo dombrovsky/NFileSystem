@@ -1,4 +1,4 @@
-﻿namespace System.IO.FileSystem
+﻿namespace System.IO.Files
 {
     /// <summary>
     /// Provides a way to control file or directory attributes and other properties.
