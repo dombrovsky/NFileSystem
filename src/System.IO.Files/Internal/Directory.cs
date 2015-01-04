@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 
 namespace System.IO.Files.Internal
 {
@@ -11,7 +12,23 @@ namespace System.IO.Files.Internal
         public Directory(IPath directoryPath)
         {
             _directoryPath = directoryPath;
-            _directoryInfo = new DirectoryInfo(_directoryPath.OriginalPath);
+
+            try
+            {
+                _directoryInfo = new DirectoryInfo(_directoryPath.OriginalPath);   
+            }
+            catch (ArgumentException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (PathTooLongException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (SecurityException exception)
+            {
+                throw exception.AsFileSystemSecurityException();
+            }
         }
 
         public IPath Path
@@ -23,12 +40,19 @@ namespace System.IO.Files.Internal
         {
             get
             {
-                if (_directoryInfo.Parent != null)
+                try
                 {
-                    return new Directory(new FileSystemPath(_directoryInfo.Parent.FullName));    
-                }
+                    if (_directoryInfo.Parent != null)
+                    {
+                        return new Directory(new FileSystemPath(_directoryInfo.Parent.FullName));
+                    }
 
-                return null;
+                    return null;   
+                }
+                catch (SecurityException exception)
+                {
+                    throw exception.AsFileSystemSecurityException();
+                }
             }
         }
 
@@ -44,22 +68,78 @@ namespace System.IO.Files.Internal
 
         public void Create()
         {
-            IO.Directory.CreateDirectory(_directoryPath.OriginalPath);
+            try
+            {
+                IO.Directory.CreateDirectory(_directoryPath.OriginalPath);   
+            }
+            catch (UnauthorizedAccessException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (IOException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
         }
 
         public void Delete()
         {
-            _directoryInfo.Delete(true);
+            try
+            {
+                _directoryInfo.Delete(true);    
+            }
+            catch (UnauthorizedAccessException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (IOException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (SecurityException exception)
+            {
+                throw exception.AsFileSystemSecurityException();
+            }
         }
 
         public IEnumerable<IDirectory> EnumerateDirectories(string searchPattern)
         {
-            return _directoryInfo.EnumerateDirectories(searchPattern).Select(info => new Directory(new FileSystemPath(info.FullName)));
+            try
+            {
+                return _directoryInfo.EnumerateDirectories(searchPattern).Select(info => new Directory(new FileSystemPath(info.FullName)));
+            }
+            catch (ArgumentException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (DirectoryNotFoundException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (SecurityException exception)
+            {
+                throw exception.AsFileSystemSecurityException();
+            }
         }
 
         public IEnumerable<IFile> EnumerateFiles(string searchPattern)
         {
-            return _directoryInfo.EnumerateFiles(searchPattern).Select(info => new File(new FileSystemPath(info.FullName)));
+            try
+            {
+                return _directoryInfo.EnumerateFiles(searchPattern).Select(info => new File(new FileSystemPath(info.FullName)));   
+            }
+            catch (ArgumentException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (DirectoryNotFoundException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (SecurityException exception)
+            {
+                throw exception.AsFileSystemSecurityException();
+            }
         }
     }
 }

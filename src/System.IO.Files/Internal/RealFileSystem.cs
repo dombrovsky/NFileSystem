@@ -16,11 +16,11 @@ namespace System.IO.Files.Internal
                 }
                 catch (UnauthorizedAccessException exception)
                 {
-                    exception.ThrowAsFileSystemSecurityException();
+                    throw exception.AsFileSystemSecurityException();
                 }
                 catch (NotSupportedException exception)
                 {
-                    exception.ThrowAsFileSystemException();
+                    throw exception.AsFileSystemException();
                 }
             }
             set
@@ -31,15 +31,15 @@ namespace System.IO.Files.Internal
                 }
                 catch (ArgumentException exception)
                 {
-                    exception.ThrowAsFileSystemException();
+                    throw exception.AsFileSystemException();
                 }
                 catch (SecurityException exception)
                 {
-                    exception.ThrowAsFileSystemSecurityException();
+                    throw exception.AsFileSystemSecurityException();
                 }
                 catch (IOException exception)
                 {
-                    exception.ThrowAsFileSystemException();
+                    throw exception.AsFileSystemException();
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace System.IO.Files.Internal
             }
             catch (IOException exception)
             {
-                exception.ThrowAsFileSystemException();
+                throw exception.AsFileSystemException();
             }
         }
 
@@ -94,7 +94,7 @@ namespace System.IO.Files.Internal
             }
             catch (SecurityException exception)
             {
-                exception.ThrowAsFileSystemSecurityException();
+                throw exception.AsFileSystemSecurityException();
             }
         }
 
@@ -106,11 +106,11 @@ namespace System.IO.Files.Internal
             }
             catch (IOException exception)
             {
-                exception.ThrowAsFileSystemException();
+                throw exception.AsFileSystemException();
             }
             catch (UnauthorizedAccessException exception)
             {
-                exception.ThrowAsFileSystemSecurityException();
+                throw exception.AsFileSystemException();
             }
         }
     }

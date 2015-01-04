@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-namespace System.IO.Files.Internal
+﻿namespace System.IO.Files.Internal
 {
     internal static class ExceptionExtensions
     {
-        public static void ThrowAsFileSystemException(this Exception exception)
+        public static FileSystemException AsFileSystemException(this Exception exception)
         {
-            throw new FileSystemException(exception.Message, exception);
+            return new FileSystemException(exception.Message, exception);
         }
 
-        public static void ThrowAsFileSystemSecurityException(this Exception exception)
+        public static FileSystemSecurityException AsFileSystemSecurityException(this Exception exception)
         {
-            throw new FileSystemSecurityException(exception.Message, exception);
+            return new FileSystemSecurityException(exception.Message, exception);
         }
     }
 }

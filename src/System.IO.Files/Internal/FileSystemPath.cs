@@ -17,19 +17,19 @@ namespace System.IO.Files.Internal
             }
             catch (ArgumentException exception)
             {
-                exception.ThrowAsFileSystemException();
+                throw exception.AsFileSystemException();
             }
             catch (SecurityException exception)
             {
-                exception.ThrowAsFileSystemSecurityException();
+                throw exception.AsFileSystemSecurityException();
             }
             catch (NotSupportedException exception)
             {
-                exception.ThrowAsFileSystemException();
+                throw exception.AsFileSystemException();
             }
             catch (PathTooLongException exception)
             {
-                exception.ThrowAsFileSystemException();
+                throw exception.AsFileSystemException();
             }
         }
 
@@ -86,7 +86,7 @@ namespace System.IO.Files.Internal
             }
             catch (ArgumentException exception)
             {
-                exception.ThrowAsFileSystemException();
+                throw exception.AsFileSystemException();
             }
         }
 
