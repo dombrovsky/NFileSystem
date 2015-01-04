@@ -16,11 +16,11 @@ namespace System.IO.Files.Internal
                 }
                 catch (UnauthorizedAccessException exception)
                 {
-                    throw new FileSystemSecurityException(exception.Message, exception);
+                    exception.ThrowAsFileSystemSecurityException();
                 }
                 catch (NotSupportedException exception)
                 {
-                    throw new FileSystemSecurityException(exception.Message, exception);
+                    exception.ThrowAsFileSystemException();
                 }
             }
             set
@@ -31,15 +31,15 @@ namespace System.IO.Files.Internal
                 }
                 catch (ArgumentException exception)
                 {
-                    throw new FileSystemException(exception.Message, exception);
+                    exception.ThrowAsFileSystemException();
                 }
                 catch (SecurityException exception)
                 {
-                    throw new FileSystemSecurityException(exception.Message, exception);
+                    exception.ThrowAsFileSystemSecurityException();
                 }
                 catch (IOException exception)
                 {
-                    throw new FileSystemException(exception.Message, exception);
+                    exception.ThrowAsFileSystemException();
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace System.IO.Files.Internal
             }
             catch (IOException exception)
             {
-                throw new FileSystemException(exception.Message, exception);
+                exception.ThrowAsFileSystemException();
             }
         }
 
@@ -94,7 +94,7 @@ namespace System.IO.Files.Internal
             }
             catch (SecurityException exception)
             {
-                throw new FileSystemSecurityException(exception.Message, exception);
+                exception.ThrowAsFileSystemSecurityException();
             }
         }
 
@@ -106,11 +106,11 @@ namespace System.IO.Files.Internal
             }
             catch (IOException exception)
             {
-                throw new FileSystemException(exception.Message, exception);
+                exception.ThrowAsFileSystemException();
             }
             catch (UnauthorizedAccessException exception)
             {
-                throw new FileSystemSecurityException(exception.Message, exception);
+                exception.ThrowAsFileSystemSecurityException();
             }
         }
     }
