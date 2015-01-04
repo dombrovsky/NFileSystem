@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileSystemSecurityException.cs" />
+    <Compile Include="FileSystemException.cs" />
     <Compile Include="FileSystemFactory.cs" />
     <Compile Include="IDirectory.cs" />
     <Compile Include="IFile.cs" />

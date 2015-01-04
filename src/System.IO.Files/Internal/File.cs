@@ -54,6 +54,11 @@
             _fileInfo.Encrypt();
         }
 
+        public long GetLength()
+        {
+            return _fileInfo.Length;
+        }
+
         public Stream AsStream(IFileStreamFactory fileStreamFactory)
         {
             return fileStreamFactory.CreateStream(this);

@@ -1,4 +1,6 @@
-﻿namespace System.IO.Files.Internal
+﻿using System.Security;
+
+namespace System.IO.Files.Internal
 {
     internal sealed class FileSystemPath : IPath
     {
@@ -8,7 +10,27 @@
         public FileSystemPath(string path)
         {
             _originalPath = path;
-            _absolutePath = Path.GetFullPath(_originalPath);
+
+            try
+            {
+                _absolutePath = Path.GetFullPath(_originalPath);
+            }
+            catch (ArgumentException exception)
+            {
+                throw new FileSystemException(exception.Message, exception);
+            }
+            catch (SecurityException exception)
+            {
+                throw new FileSystemSecurityException(exception.Message, exception);
+            }
+            catch (NotSupportedException exception)
+            {
+                throw new FileSystemException(exception.Message, exception);
+            }
+            catch (PathTooLongException exception)
+            {
+                throw new FileSystemException(exception.Message, exception);
+            }
         }
 
         public string AbsolutePath
@@ -58,7 +80,14 @@
 
         public IPath Combine(string relativePath)
         {
-            return new FileSystemPath(Path.Combine(_originalPath, relativePath));
+            try
+            {
+                return new FileSystemPath(Path.Combine(_originalPath, relativePath));
+            }
+            catch (ArgumentException exception)
+            {
+                throw new FileSystemException(exception.Message, exception);
+            }
         }
 
         public IPath Combine(IPath relativePath)

@@ -1,10 +1,17 @@
-﻿namespace System.IO.Files
+﻿using System.Collections.Generic;
+
+namespace System.IO.Files
 {
     /// <summary>
     /// Root object for accesiing file system.
     /// </summary>
     public interface IFileSystem
     {
+        /// <summary>
+        /// Gets or sets the current working directory of the application.
+        /// </summary>
+        IDirectory CurrentDirectory { get; set; }
+
         /// <summary>
         /// Creates the relative or absolute path.
         /// </summary>
@@ -67,5 +74,13 @@
         /// The path to the temporary folder, ending with a backslash.
         /// </returns>
         IPath GetTempPath();
+
+        /// <summary>
+        /// Retrieves the paths of the logical drives on this computer.
+        /// </summary>
+        /// <returns>
+        /// The logical drives on this computer.
+        /// </returns>
+        IEnumerable<IPath> GetLogicalDrives();
     }
 }

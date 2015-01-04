@@ -41,6 +41,14 @@
         void Encrypt();
 
         /// <summary>
+        /// Gets the size, in bytes, of the current file.
+        /// </summary>
+        /// <returns>
+        /// The size of the current file in bytes.
+        /// </returns>
+        long GetLength();
+
+        /// <summary>
         /// Opens stream to the file using specified factory.
         /// </summary>
         /// <param name="fileStreamFactory">The file stream factory.</param>
