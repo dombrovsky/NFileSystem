@@ -1,4 +1,6 @@
-﻿namespace System.IO.Files.Internal
+﻿using System.Security;
+
+namespace System.IO.Files.Internal
 {
     internal sealed class File : IFile
     {
@@ -41,22 +43,82 @@
 
         public void Delete()
         {
-            _fileInfo.Delete();
+            try
+            {
+                _fileInfo.Delete();
+            }
+            catch (UnauthorizedAccessException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (IOException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (SecurityException exception)
+            {
+                throw exception.AsFileSystemSecurityException();
+            }
         }
 
         public void Decrypt()
         {
-            _fileInfo.Decrypt();
+            try
+            {
+                _fileInfo.Decrypt();
+            }
+            catch (UnauthorizedAccessException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (IOException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (PlatformNotSupportedException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (NotSupportedException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
         }
 
         public void Encrypt()
         {
-            _fileInfo.Encrypt();
+            try
+            {
+                _fileInfo.Encrypt();
+            }
+            catch (UnauthorizedAccessException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (IOException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (PlatformNotSupportedException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
+            catch (NotSupportedException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
         }
 
         public long GetLength()
         {
-            return _fileInfo.Length;
+            try
+            {
+                return _fileInfo.Length;
+            }
+            catch (IOException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
         }
 
         public Stream AsStream(IFileStreamFactory fileStreamFactory)
