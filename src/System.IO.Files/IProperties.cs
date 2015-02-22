@@ -39,5 +39,10 @@
         /// Gets or sets the time, in coordinated universal time (UTC), when the file or directory was last written to.
         /// </summary>
         DateTime LastWriteTimeUtc { get; set; }
+
+        /// <summary>
+        /// Refreshes the state of the object.
+        /// </summary>
+        void Refresh();
     }
 }

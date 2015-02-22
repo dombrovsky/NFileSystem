@@ -1,4 +1,6 @@
-﻿namespace System.IO.Files.Internal
+﻿using System.Security;
+
+namespace System.IO.Files.Internal
 {
     internal sealed class Properties : IProperties
     {
@@ -11,44 +13,287 @@
 
         public FileAttributes Attributes
         {
-            get { return _fileSystemInfo.Attributes; }
-            set { _fileSystemInfo.Attributes = value; }
+            get
+            {
+                try
+                {
+                    return _fileSystemInfo.Attributes;
+                }
+                catch (SecurityException exception)
+                {
+                    throw exception.AsFileSystemSecurityException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
+
+            set
+            {
+                try
+                {
+                    _fileSystemInfo.Attributes = value;
+                }
+                catch (ArgumentException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (SecurityException exception)
+                {
+                    throw exception.AsFileSystemSecurityException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
         }
 
         public DateTime CreationTime
         {
-            get { return _fileSystemInfo.CreationTime; }
-            set { _fileSystemInfo.CreationTime = value; }
+            get
+            {
+                try
+                {
+                    return _fileSystemInfo.CreationTime;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
+
+            set
+            {
+                try
+                {
+                    _fileSystemInfo.CreationTime = value;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (ArgumentOutOfRangeException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
         }
 
         public DateTime CreationTimeUtc
         {
-            get { return _fileSystemInfo.CreationTimeUtc; }
-            set { _fileSystemInfo.CreationTimeUtc = value; }
+            get
+            {
+                try
+                {
+                    return _fileSystemInfo.CreationTimeUtc;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
+
+            set
+            {
+                try
+                {
+                    _fileSystemInfo.CreationTimeUtc = value;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (ArgumentOutOfRangeException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
         }
 
         public DateTime LastAccessTime
         {
-            get { return _fileSystemInfo.LastAccessTime; }
-            set { _fileSystemInfo.LastAccessTime = value; }
+            get
+            {
+                try
+                {
+                    return _fileSystemInfo.LastAccessTime;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
+
+            set
+            {
+                try
+                {
+                    _fileSystemInfo.LastAccessTime = value;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (ArgumentOutOfRangeException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
         }
 
         public DateTime LastAccessTimeUtc
         {
-            get { return _fileSystemInfo.LastAccessTimeUtc; }
-            set { _fileSystemInfo.LastAccessTimeUtc = value; }
+            get
+            {
+                try
+                {
+                    return _fileSystemInfo.LastAccessTimeUtc;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
+
+            set
+            {
+                try
+                {
+                    _fileSystemInfo.LastAccessTimeUtc = value;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (ArgumentOutOfRangeException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
         }
 
         public DateTime LastWriteTime
         {
-            get { return _fileSystemInfo.LastWriteTime; }
-            set { _fileSystemInfo.LastWriteTime = value; }
+            get
+            {
+                try
+                {
+                    return _fileSystemInfo.LastWriteTime;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
+
+            set
+            {
+                try
+                {
+                    _fileSystemInfo.LastWriteTime = value;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (ArgumentOutOfRangeException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
         }
 
         public DateTime LastWriteTimeUtc
         {
-            get { return _fileSystemInfo.LastWriteTimeUtc; }
-            set { _fileSystemInfo.LastWriteTimeUtc = value; }
+            get
+            {
+                try
+                {
+                    return _fileSystemInfo.LastWriteTimeUtc;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
+
+            set
+            {
+                try
+                {
+                    _fileSystemInfo.LastWriteTimeUtc = value;
+                }
+                catch (PlatformNotSupportedException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (IOException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+                catch (ArgumentOutOfRangeException exception)
+                {
+                    throw exception.AsFileSystemException();
+                }
+            }
+        }
+
+        public void Refresh()
+        {
+            try
+            {
+                _fileSystemInfo.Refresh();
+            }
+            catch (IOException exception)
+            {
+                throw exception.AsFileSystemException();
+            }
         }
     }
 }
